@@ -1,0 +1,7 @@
+.expo/*
+*.jks
+*.key
+*.mobileprovision
+*.p12
+node_modules/**/*
+npm-debug.*

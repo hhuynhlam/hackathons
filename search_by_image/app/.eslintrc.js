@@ -27,7 +27,21 @@ module.exports = {
   },
 
   rules: {
+    // stylistic
+    'comma-dangle': ['error', {
+      arrays: 'always-multiline',
+      exports: 'always-multiline',
+      functions: 'ignore',
+      imports: 'always-multiline',
+      objects: 'always-multiline',
+    }],
+    'space-before-function-paren': ['error', {
+        anonymous: 'always',
+        asyncArrow: 'always',
+        named: 'never',
+    }],
+
+    // react
     'react/prop-types': ['off'],
-    'space-before-function-paren': ['error', 'never'],
   },
 }

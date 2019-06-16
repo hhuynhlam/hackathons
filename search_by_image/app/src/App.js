@@ -3,8 +3,8 @@ import { AppLoading } from 'expo'
 import { Asset } from 'expo-asset'
 import * as Font from 'expo-font'
 import { Ionicons } from '@expo/vector-icons'
-import styled from 'styled-components'
-import { Platform, StatusBar, View } from 'react-native'
+import styled from 'styled-components/native'
+import { Platform, StatusBar } from 'react-native'
 
 import AppNavigator from 'navigation/AppNavigator'
 
@@ -36,8 +36,10 @@ async function preloadResources() {
       require('./assets/images/robot-prod.png')
     ]),
     Font.loadAsync({
-      // This is the font that we are using for our tab bar
+      'Roboto': require('./assets/fonts/Roboto.ttf'),
+      'Roboto_medium': require('./assets/fonts/Roboto_medium.ttf'),
       ...Ionicons.font,
+
       // We include SpaceMono because we use it in HomeScreen.js. Feel free to
       // remove this if you are not using it in your app
       'space-mono': require('./assets/fonts/SpaceMono-Regular.ttf')
@@ -55,7 +57,7 @@ function handleFinish(setLoadingComplete) {
   setLoadingComplete(true)
 }
 
-App.View = styled(View)`
+App.View = styled.View`
   flex: 1;
   background-color: #FFF;
 `

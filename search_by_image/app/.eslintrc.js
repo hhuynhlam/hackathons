@@ -19,7 +19,7 @@ module.exports = {
   },
 
   "env": {
-    "jest/globals": true,
+    'jest/globals': true,
   },
 
   globals: {
@@ -28,5 +28,6 @@ module.exports = {
 
   rules: {
     'react/prop-types': ['off'],
+    'space-before-function-paren': ['error', 'never'],
   },
 }

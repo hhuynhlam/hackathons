@@ -1,34 +1,35 @@
+import React, { useState } from 'react'
 import { AppLoading } from 'expo'
 import { Asset } from 'expo-asset'
 import * as Font from 'expo-font'
-import React, { useState } from 'react'
-import { Platform, StatusBar, StyleSheet, View } from 'react-native'
 import { Ionicons } from '@expo/vector-icons'
+import styled from 'styled-components'
+import { Platform, StatusBar, View } from 'react-native'
 
 import AppNavigator from 'navigation/AppNavigator'
 
-export default function App (props) {
+function App(props) {
   const [isLoadingComplete, setLoadingComplete] = useState(false)
 
   if (!isLoadingComplete && !props.skipLoadingScreen) {
     return (
       <AppLoading
-        startAsync={loadResourcesAsync}
-        onError={handleLoadingError}
-        onFinish={() => handleFinishLoading(setLoadingComplete)}
+        startAsync={preloadResources}
+        onError={handleError}
+        onFinish={() => handleFinish(setLoadingComplete)}
       />
     )
-  } else {
-    return (
-      <View style={styles.container}>
-        {Platform.OS === 'ios' && <StatusBar barStyle='default' />}
-        <AppNavigator />
-      </View>
-    )
   }
+
+  return (
+    <App.View>
+      {Platform.OS === 'ios' && <StatusBar barStyle='default' />}
+      <AppNavigator />
+    </App.View>
+  )
 }
 
-async function loadResourcesAsync () {
+async function preloadResources() {
   await Promise.all([
     Asset.loadAsync([
       require('./assets/images/robot-dev.png'),
@@ -44,19 +45,19 @@ async function loadResourcesAsync () {
   ])
 }
 
-function handleLoadingError (error: Error) {
+function handleError(error: Error) {
   // In this case, you might want to report the error to your error reporting
   // service, for example Sentry
   console.warn(error)
 }
 
-function handleFinishLoading (setLoadingComplete) {
+function handleFinish(setLoadingComplete) {
   setLoadingComplete(true)
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff'
-  }
-})
+App.View = styled(View)`
+  flex: 1;
+  background-color: #FFF;
+`
+
+export default App

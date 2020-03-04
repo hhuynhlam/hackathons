@@ -15,7 +15,7 @@ gem 'jbuilder', '~> 2.9'
 gem 'mixlib-config', '~> 2.2'
 gem 'mongoid', '~> 7.0'
 gem 'pry-rails', '~> 0.3'
-gem 'puma', '~> 3.11'
+gem 'puma', '~> 3.12'
 gem 'rack-cors', require: 'rack/cors'
 gem 'twilio-ruby', '~> 5.23.1'
 
